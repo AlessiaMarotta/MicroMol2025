@@ -53,7 +53,7 @@ ASVs table + Rapresentative Sequences + taxonomy table + metadata
 
 ## now open **analysis_sea4blue.R** in your [Rcloud](https://posit.cloud/content/6858169)
 ```
-https://posit.cloud/content/6858169
+[https://posit.cloud/content/6858169](https://posit.cloud/content/11506963)
 ```
 #load packages
 ```r
