@@ -20,6 +20,19 @@ Navigate to the `raw_qc_initial` directory:
 
 #### 2. Primer removal from sequencing reads with Cutadapt.
 
+Amplicon primers are removed from paired-end sequencing reads using Cutadapt.  
+The workflow supports two trimming strategies, depending on the structure of the sequencing data:
+
+**(1) Length-based primer trimming.**  
+If the primer length is known and constant, Cutadapt removes a fixed number of bases from the start of each read (`-u <length>` for R1 and `-U <length>` for R2).  
+This method is efficient and appropriate when primer positions are invariant across all reads.
+
+**(2) Sequence-based primer trimming.**  
+Alternatively, Cutadapt searches for the exact primer sequences at the beginning of each read (`-g "^primer"` for R1 and `-G "^primer"` for R2`).  
+The `--discard-untrimmed` option ensures that only reads containing correctly identified primer sequences are retained, improving downstream accuracy by removing non-specific or incomplete amplicons.
+
+Both approaches generate trimmed FASTQ files (`*_trimmed_R1.fq.gz` and `*_trimmed_R2.fq.gz`) and a detailed Cutadapt log file reporting trimming statistics, read retention, and primer-detection outcomes.
+
 
 #### 3. Post-cutadapt quality control with FastQC and QC report generation with MultiQC
    After primer trimming, FastQC and MultiQC are run again to evaluate improvements in read quality and to verify the effectiveness of the trimming step.
