@@ -1,13 +1,5 @@
 # Bash
 
-## Server didattica (login using Guacamole)
-
-[https://rlab.unibo.it](https://rlab.unibo.it)
-
-login using your unibo email address and password
-To copy text (with Windows): select text to copy and paste it on command line using right click
-To copy text (with Mac): select text and press control+Shift+C to copy, control+Shift+V to paste
-
 ## Common ways to login to a Server
 ```
 ssh username@ip # from Ubunt or Mac terminal
