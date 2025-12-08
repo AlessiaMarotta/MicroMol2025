@@ -67,11 +67,13 @@ A typical result:
 - reduction corresponds to primer removal plus slight trimming adjustments
 
 - **Adapter (primer) trimming statistics**: For each primer:
+
       - exact primer sequence  
       - type (anchored 5′)  
       - number of allowed mismatches  
       - number of reads trimmed  
       - distribution of match lengths and error rates  
+
 These tables help assess how consistently primers were detected and whether mismatches were present.
 
 #### 3. Post-cutadapt quality control with FastQC and QC report generation with MultiQC
