@@ -4,7 +4,6 @@
 ```
 ssh username@ip # from Ubunt or Mac terminal
 ```
-Using [putty](https://www.putty.org/) for Windows
 
 ## Paths, files and directories
 
