@@ -15,6 +15,7 @@ Navigate to the `raw_qc_initial` directory:
    The MultiQC HTML report provides an aggregated, sample-wide overview of all FastQC outputs, enabling a comparative evaluation of sequencing quality across the dataset.
    
    FastQC documentation: https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/
+   
    MultiQC tutorial: https://www.youtube.com/watch?v=qPbIlO_KWN0
 
 3. Primer removal from sequencing reads with Cutadapt. The --discard-untrimmed option is applied
