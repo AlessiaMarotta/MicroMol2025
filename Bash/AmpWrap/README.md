@@ -94,6 +94,17 @@ FIGARO automatically identifies optimal trimming parameters, such as truncation 
 
 #### 5. Amplicon sequence variant inference with DADA2
    - Filter and trim
+   - Learn the Error Rates
+   - Sample Inference
+   - Merge paired reads
+   - Construct sequence table
+     
+   - Remove chimeras
+     Merge the forward and reverse reads together to obtain the full denoised sequences. Merging is performed by aligning the denoised forward reads with the reverse-complement of the corresponding denoised reverse reads, and then constructing the merged “contig” sequences. By default, merged sequences are only output if the forward and reverse reads overlap by at least 12 bases, and are identical to each other in the overlap region (but these conditions can be changed via function arguments).
+     
+   - Track reads through the pipeline
+   - Assign taxonomy
+   - 
      
   
    
