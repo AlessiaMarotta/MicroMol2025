@@ -85,7 +85,7 @@ rm –r foldername #remove folder
 
 wget can handle HTTP and FTP links
 ```
-wget https://github.com/jacopoM28/CompOmics_2022/archive/refs/heads/main.zip
+wget https://github.com/
 ```
 For public data we don’t need any authentication to gain access to this file, otherwise use flags *--user=*  and *--ask-password* 
 ```
@@ -103,8 +103,6 @@ scp username@ip:path/to/file/to/copy /where/to/paste/it # copy a file from remot
 scp path/to/file/to/copy username@ip:/where/to/paste/it # copy a file from local host to remote host
 scp -r username@ip:path/to/file/to/copy /where/to/paste/it # copy a directory
 ```
-using Windows:
-[Cyberduck](https://cyberduck.io/)
 
 ## Transfer data from/to our workstation
 [tutorial Onedrive](https://liveunibo-my.sharepoint.com/:f:/g/personal/giorgio_provenzano_unibo_it/EnPpRJ8iqLxAsgQ9WpE_hw8B_vayFtTNm-C_pJwgExV1Bw)
