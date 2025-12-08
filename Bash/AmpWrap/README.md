@@ -29,7 +29,11 @@ Navigate to the `raw_qc_initial` directory:
    ls -ltrh
    ```
 #### 4. Determine optimal trimming parameters for DADA2 with FIGARO
+FIGARO automatically identifies optimal trimming parameters, such as truncation lengths for DADA2 denoising, balancing read retention and expected error rates.
+
 #### 5. Amplicon sequence variant inference with DADA2
    - Filter and trim
-     AmpWrap implements the automation of trimming parameters for DADA2 denoising using FIGARO
+     
+  
+   
    DADA2 tutorial: https://benjjneb.github.io/dada2/tutorial.html
