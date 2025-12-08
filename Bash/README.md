@@ -373,12 +373,22 @@ Conda is a package manager based on python. Each conda environment can only have
 conda create --name <ENV_NAME> python=2.7
 ```
 
-## Tips
+### Good practices in bioinformatics :
 
-> * Work in a robust and reproducible way
-> * Document each step
-> * Check everything between computational steps, errors can be silent
-> * Code should be readable and organized in a logical way
-> * Files, file names and folders organized in a logical way
-> * Humans doing rote activities tend to make many mistakes, have your computer do as much of this rote work
-as possible
+  1. **Work in a robust and reproducible way**
+  2. **Document each step**
+  3. **Check everything between computational steps, errors can be silent**
+  4. **Code should be readable and organized in a logical way**
+  5. **Files, file names and folders organized in a logical way**
+  6. **Humans doing rote activities tend to make many mistakes, have your computer do as much of this rote work as possible**
+  7. **Internet is your best friend and mentor, google everything that you don't understand!**
+  8. **If an error rise first of all try to solve the problem by yourself:** a) read the error message carefully; b) read again the help of the software; c) check for typos, they are everywhere; d) GOOGLE it!
+
+
+### Some usefull online resources :
+
+  1. **Stack Overflow**
+  2. **BioStars**
+  3. **Issue page of GitHub**. Remember to remove ```is:open``` in filters bar.
+  
+---
