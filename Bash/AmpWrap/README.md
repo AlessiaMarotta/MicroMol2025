@@ -54,33 +54,24 @@ The stats file contains the full Cutadapt report for each sample, including prim
    ```
    cat cutadapt_primer_trimming_stats.txt
    ```
-Key sections include:
-#### **• Total read pairs processed**
-The total number of paired reads supplied to Cutadapt.
+- **Total read pairs processed**: The total number of paired reads supplied to Cutadapt.
 
-#### **• Read pairs with primer detected**
-Indicates how many reads contained the forward and reverse primer sequences at the expected position.  
+- **Read pairs with primer detected**: Indicates how many reads contained the forward and reverse primer sequences at the expected position.  
 High percentages (>98%) show that primer binding was successful and consistent.
 
-#### **• Read fate breakdown**
-Reads without detectable primers are removed (`--discard-untrimmed`), ensuring only true amplicon reads proceed to DADA2.
+- **Read fate breakdown**: Reads without detectable primers are removed (`--discard-untrimmed`), ensuring only true amplicon reads proceed to DADA2.
 
-#### **• Basepairs processed vs. written**
-Shows how many total bases remain after trimming.  
+- **Basepairs processed vs. written**: Shows how many total bases remain after trimming.  
 A typical result:
-
 - ~90–92% bp retained  
 - reduction corresponds to primer removal plus slight trimming adjustments
 
-#### **• Adapter (primer) trimming statistics**
-For each primer:
-
-- exact primer sequence  
-- type (anchored 5′)  
-- number of allowed mismatches  
-- number of reads trimmed  
-- distribution of match lengths and error rates  
-
+- **Adapter (primer) trimming statistics**: For each primer:
+      - exact primer sequence  
+      - type (anchored 5′)  
+      - number of allowed mismatches  
+      - number of reads trimmed  
+      - distribution of match lengths and error rates  
 These tables help assess how consistently primers were detected and whether mismatches were present.
 
 #### 3. Post-cutadapt quality control with FastQC and QC report generation with MultiQC
