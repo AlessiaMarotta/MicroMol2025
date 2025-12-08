@@ -53,11 +53,15 @@ chmod #change permissions of your files (or directory with chmod –r)
 
 ## Edit files
 ` nano nomefile #create new empty file`
+
+
 Ctrl+S to save
 Ctrl+X to exit
 Ctrl+W to search
 
 or
+
+
 ` vi nomefile #create new empty file`
 > avoid special characters; for vi once created new file press “i" to write, after editing press Ctrl+c+: and type wq to save and exit from file or q! to exit without saving
 ```
