@@ -22,12 +22,12 @@ Navigate to the `raw_qc_initial` directory:
 Amplicon primers are removed from paired-end sequencing reads using Cutadapt.  
 The workflow supports two trimming strategies, depending on the structure of the sequencing data:
 
-**(1) Length-based primer trimming.**  
+- **Length-based primer trimming.**  
 If the primer length is known and constant, Cutadapt removes a fixed number of bases from the start of each read 
 (`-u <length>` for R1 and `-U <length>` for R2).  
 This method is efficient and appropriate when primer positions are invariant across all reads.
 
-**(2) Sequence-based primer trimming.**  
+- **Sequence-based primer trimming.**  
 Alternatively, Cutadapt searches for the exact primer sequences at the beginning of each read (`-g "^primer"` for R1 and `-G "^primer"` for R2).  
 The `--discard-untrimmed` option ensures that only reads containing correctly identified primer sequences are retained, improving downstream accuracy by removing non-specific or incomplete amplicons.
 
