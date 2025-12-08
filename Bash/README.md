@@ -7,7 +7,7 @@ ssh username@ip # from Ubunt or Mac terminal
 
 ## Paths, files and directories
 
-Open linux or mac terminal; if you have windows download [cygwin](https://www.cygwin.com/) 
+Open linux or mac terminal
 ```
 ssh username@ip #login to a server via ssh, it will ask for your password
 Ctrl+d #close session
