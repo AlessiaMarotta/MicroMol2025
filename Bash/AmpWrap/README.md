@@ -42,6 +42,8 @@ This provides a quick quality check to verify that primer sequences were correct
    ```
    cat cutadapt_summary.log
    ```
+<img width="427" height="71" alt="image" src="https://github.com/user-attachments/assets/10d77e5d-8813-4a4f-a1a4-4372627ce09f" />
+
 - **reads_retained** indicates the proportion of read pairs that contained the expected primers and were therefore kept.
 - **bps_retained** reflects the proportion of total basepairs retained after trimming, which decreases slightly due to primer removal.
 
