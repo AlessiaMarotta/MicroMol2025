@@ -351,9 +351,6 @@ conda list # see packages installed in that environment_name
 conda deactivate # close environment 
 ```
 
-## Useful Path:
-/var/local/ # where are databases in our server
-
 ## Tips
 
 > * Work in a robust and reproducible way
