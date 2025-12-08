@@ -389,6 +389,6 @@ conda create --name <ENV_NAME> python=2.7
 
   1. **Stack Overflow**
   2. **BioStars**
-  3. **Issue page of GitHub**. Remember to remove ```is:open``` in filters bar.
+  3. **Issue page of GitHub**.
   
 ---
