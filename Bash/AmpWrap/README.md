@@ -19,20 +19,69 @@ Navigate to the `raw_qc_initial` directory:
    MultiQC tutorial: https://www.youtube.com/watch?v=qPbIlO_KWN0
 
 #### 2. Primer removal from sequencing reads with Cutadapt.
-
 Amplicon primers are removed from paired-end sequencing reads using Cutadapt.  
 The workflow supports two trimming strategies, depending on the structure of the sequencing data:
 
 **(1) Length-based primer trimming.**  
-If the primer length is known and constant, Cutadapt removes a fixed number of bases from the start of each read (`-u <length>` for R1 and `-U <length>` for R2).  
+If the primer length is known and constant, Cutadapt removes a fixed number of bases from the start of each read 
+(`-u <length>` for R1 and `-U <length>` for R2).  
 This method is efficient and appropriate when primer positions are invariant across all reads.
 
 **(2) Sequence-based primer trimming.**  
-Alternatively, Cutadapt searches for the exact primer sequences at the beginning of each read (`-g "^primer"` for R1 and `-G "^primer"` for R2`).  
+Alternatively, Cutadapt searches for the exact primer sequences at the beginning of each read (`-g "^primer"` for R1 and `-G "^primer"` for R2).  
 The `--discard-untrimmed` option ensures that only reads containing correctly identified primer sequences are retained, improving downstream accuracy by removing non-specific or incomplete amplicons.
 
 Both approaches generate trimmed FASTQ files (`*_trimmed_R1.fq.gz` and `*_trimmed_R2.fq.gz`) and a detailed Cutadapt log file reporting trimming statistics, read retention, and primer-detection outcomes.
+Navigate to the `cutadapt` directory:
+   ```
+   cd run_1/intermediate/cutadapt
+   ls -ltrh
+   ```
+The summary file reporting the percentage of reads and basepairs retained after primer trimming.  
+This provides a quick quality check to verify that primer sequences were correctly detected and that most reads were preserved for downstream analysis.
+   ```
+   cat cutadapt_summary.log
+   ```
+- **reads_retained** indicates the proportion of read pairs that contained the expected primers and were therefore kept.
+- **bps_retained** reflects the proportion of total basepairs retained after trimming, which decreases slightly due to primer removal.
 
+High retention values (>95% reads retained; ~90% bp retained) indicate that:
+- primer sequences were present and correctly identified in the vast majority of reads,  
+- the sequencing run produced high-quality and consistent amplicons,  
+- very few reads were discarded due to missing or incomplete primer sequences.
+
+The stats file contains the full Cutadapt report for each sample, including primer detection statistics, read filtering outcomes, and trimming efficiency.
+   ```
+   cat cutadapt_primer_trimming_stats.txt
+   ```
+Key sections include:
+#### **• Total read pairs processed**
+The total number of paired reads supplied to Cutadapt.
+
+#### **• Read pairs with primer detected**
+Indicates how many reads contained the forward and reverse primer sequences at the expected position.  
+High percentages (>98%) show that primer binding was successful and consistent.
+
+#### **• Read fate breakdown**
+Reads without detectable primers are removed (`--discard-untrimmed`), ensuring only true amplicon reads proceed to DADA2.
+
+#### **• Basepairs processed vs. written**
+Shows how many total bases remain after trimming.  
+A typical result:
+
+- ~90–92% bp retained  
+- reduction corresponds to primer removal plus slight trimming adjustments
+
+#### **• Adapter (primer) trimming statistics**
+For each primer:
+
+- exact primer sequence  
+- type (anchored 5′)  
+- number of allowed mismatches  
+- number of reads trimmed  
+- distribution of match lengths and error rates  
+
+These tables help assess how consistently primers were detected and whether mismatches were present.
 
 #### 3. Post-cutadapt quality control with FastQC and QC report generation with MultiQC
    After primer trimming, FastQC and MultiQC are run again to evaluate improvements in read quality and to verify the effectiveness of the trimming step.
