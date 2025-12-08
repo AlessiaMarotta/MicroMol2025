@@ -66,13 +66,14 @@ A typical result:
 - ~90–92% bp retained  
 - reduction corresponds to primer removal plus slight trimming adjustments
 
-- **Adapter (primer) trimming statistics**: For each primer:
+- **Adapter (primer) trimming statistics**:
+For each primer:
 
-      - exact primer sequence  
-      - type (anchored 5′)  
-      - number of allowed mismatches  
-      - number of reads trimmed  
-      - distribution of match lengths and error rates  
+  - exact primer sequence
+  - type (anchored 5′)
+  - number of allowed mismatches
+  - number of reads trimmed
+  - distribution of match lengths and error rates  
 
 These tables help assess how consistently primers were detected and whether mismatches were present.
 
