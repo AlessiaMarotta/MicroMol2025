@@ -62,9 +62,7 @@ High percentages (>98%) show that primer binding was successful and consistent.
 - **Read fate breakdown**: Reads without detectable primers are removed (`--discard-untrimmed`), ensuring only true amplicon reads proceed to DADA2.
 
 - **Basepairs processed vs. written**: Shows how many total bases remain after trimming.  
-A typical result:
-- ~90–92% bp retained  
-- reduction corresponds to primer removal plus slight trimming adjustments
+A typical result: ~90–92% bp retained, reduction corresponds to primer removal plus slight trimming adjustments
 
 - **Adapter (primer) trimming statistics**:
 For each primer:
