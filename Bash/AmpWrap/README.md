@@ -56,6 +56,8 @@ The stats file contains the full Cutadapt report for each sample, including prim
    ```
    cat cutadapt_primer_trimming_stats.txt
    ```
+<img width="2128" height="1158" alt="image" src="https://github.com/user-attachments/assets/b98991a9-d077-4743-a68a-e0d7b3b3c58f" />
+
 - **Total read pairs processed**: The total number of paired reads supplied to Cutadapt.
 
 - **Read pairs with primer detected**: Indicates how many reads contained the forward and reverse primer sequences at the expected position.  
