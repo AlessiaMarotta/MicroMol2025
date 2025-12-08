@@ -18,10 +18,18 @@ Navigate to the `raw_qc_initial` directory:
    
    MultiQC tutorial: https://www.youtube.com/watch?v=qPbIlO_KWN0
 
-3. Primer removal from sequencing reads with Cutadapt. The --discard-untrimmed option is applied
-4. Post-cutadapt quality control with FastQC and QC report generation with MultiQC
-5. Determine optimal trimming parameters for DADA2 with FIGARO
-6. Amplicon sequence variant inference with DADA2
+#### 2. Primer removal from sequencing reads with Cutadapt.
+
+
+#### 3. Post-cutadapt quality control with FastQC and QC report generation with MultiQC
+   After primer trimming, FastQC and MultiQC are run again to evaluate improvements in read quality and to verify the effectiveness of the trimming step.
+   Navigate to the `raw_qc_post_cutadapt` directory:
+   ```
+   cd run_1/QC/raw_qc_post_cutadapt
+   ls -ltrh
+   ```
+#### 4. Determine optimal trimming parameters for DADA2 with FIGARO
+#### 5. Amplicon sequence variant inference with DADA2
    - Filter and trim
      AmpWrap implements the automation of trimming parameters for DADA2 denoising using FIGARO
    DADA2 tutorial: https://benjjneb.github.io/dada2/tutorial.html
