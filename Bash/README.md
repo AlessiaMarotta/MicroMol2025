@@ -250,7 +250,11 @@ conda create --name <ENV_NAME> python=2.7
 
 
 
-Esercizi
+# Esercizi
+Andare nella directory in cui sono presenti le raw reads, e listare i file presenti:
+```
+ls -l
+```
 1 - Visualizzare le prime 8 righe (prime 2 reads)
 ```
 zcat S1_10_L001_R1_001.fastq.gz | head -n 8
