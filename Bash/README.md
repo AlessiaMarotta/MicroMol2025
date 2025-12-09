@@ -255,36 +255,47 @@ Andare nella directory in cui sono presenti le raw reads, e listare i file prese
 ```
 ls -l
 ```
-1 - Visualizzare le prime 8 righe (prime 2 reads)
+- Visualizzare le prime 8 righe (prime 2 reads)
 ```
 zcat S1_10_L001_R1_001.fastq.gz | head -n 8
 ```
-2 - Sfogliare l’intero file
+- Sfogliare l’intero file
 ```
 zcat S1_10_L001_R1_001.fastq.gz | less -S
 ```
-3 - Contare le linee
+- Contare le linee
 ```
 zcat S1_10_L001_R1_001.fastq.gz | wc -l
 ```
-4 - Numero di reads
+- Numero di reads
 ```
 echo $(( $(zcat S1_10_L001_R1_001.fastq.gz | wc -l) / 4 ))
 ```
-5 - Lunghezza della prima read
+- Lunghezza della prima read
 ```
 zcat S1_10_L001_R1_001.fastq.gz | sed -n '2p' | awk '{print length}'
 ```
-6 - Lunghezza media di tutte le reads
+oppure usando il comando builtin di bash '${#variabile}'
+```
+seq=$(zcat S1_10_L001_R1_001.fastq.gz | sed -n '2p')
+echo ${#seq}
+```
+- Stampare la lunghezza di ogni read:
+```
+zcat S1_10_L001_R1_001.fastq.gz | awk 'NR % 4 == 2 { print length($0) }'
+```
+Clicca Ctrl+c per fermare!
+
+- Lunghezza media di tutte le reads
 ```
 zcat S1_10_L001_R1_001.fastq.gz \
     | awk 'NR%4==2 { total+=length($0); n++ } END { print total/n }'
 ```
-7 - Cercare una sequenza specifica
+- Cercare una sequenza specifica
 ```
 zcat S1_10_L001_R1_001.fastq.gz | grep -c "ACGTACGT"
 ```
-8- Rinominare i files
+- Rinominare i files
 ```
 for f in *.fastq.gz; do
     sample=$(echo "$f" | cut -d'_' -f1)
@@ -294,13 +305,13 @@ for f in *.fastq.gz; do
 done
 
 ```
-9- Aggiungere un prefisso a tutti gli header
+- Aggiungere un prefisso a tutti gli header
 ```
 zcat S1_R1.fastq.gz \
    | awk 'NR%4==1{print "@S1_" substr($0,2)} NR%4!=1{print}' \
    | gzip > S1_R1_renamed.fastq.gz
 ```
-10 - Reindirizzare l’output in nuovi file
+- Reindirizzare l’output in nuovi file
 ```
 zcat S1_R1.fastq.gz | head -n 20 > prima_read.fastq
 ```
