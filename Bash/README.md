@@ -291,9 +291,13 @@ Clicca Ctrl+c per fermare!
 zcat S1_10_L001_R1_001.fastq.gz \
     | awk 'NR%4==2 { total+=length($0); n++ } END { print total/n }'
 ```
-- Cercare una sequenza specifica
+- Cercare e contare quante volte compare una sequenza specifica:
 ```
-zcat S1_10_L001_R1_001.fastq.gz | grep -c "ACGTACGT"
+zcat S1_10_L001_R1_001.fastq.gz | grep -c "ACGTACG"
+```
+- Stampare tutte le righe che contengono una sequenza specifica:
+```
+zcat S1_10_L001_R1_001.fastq.gz | grep "ACGTACG"
 ```
 - Rinominare i files
 ```
