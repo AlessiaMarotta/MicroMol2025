@@ -1,6 +1,4 @@
 ### AmpWrap Analysis
-Visit: https://github.com/LDoni/AmpWrap  
-and follow the instructions provided in the repository to run the complete analysis.
 
 ### Reviewing the Results
 #### 1. Initial Quality Control with FastQC and Summary Report with MultiQC
@@ -112,9 +110,9 @@ Vediamo il report finale creato da AmpWrap
 <img width="1236" height="843" alt="image" src="https://github.com/user-attachments/assets/e9dbb78d-e9c2-44ff-bd60-f724c6845806" />
 
 Cosa ci dice?
-- reads.in : Numero di raw reads in input (FASTQ).
-- reads.out : Reads rimaste dopo cutadapt
-- dadaF e dadaR : Numero di letture rimaste dopo il filtraggio per forward (F) e reverse (R) in DADA2.
+- **reads.in** : Numero di raw reads in input (FASTQ).
+- **reads.out** : Reads rimaste dopo cutadapt
+- **dadaF** e **dadaR** : Numero di letture rimaste dopo il filtraggio per forward (F) e reverse (R) in DADA2.
 - merged : Numero di coppie di reads R1–R2 che sono state mergiate.
 - nonchim : Reads rimaste dopo la rimozione delle chimere.
 - total_retained : Percentuale di reads finali rispetto all’iniziale.
