@@ -307,8 +307,38 @@ for f in *.fastq.gz; do
     new="test_${sample}_${read}.fastq.gz"
     mv "$f" "$new"
 done
-
 ```
+` echo "$f"`  -> stampa il nome del file ad esempio ` S1_10_L001_R1_001.fastq.gz` 
+
+La pipe passa l’output del comando precedente come input al comando successivo, cioè a cut. 
+
+` cut`  taglia una stringa in campi. 
+` -d'_'`  dice che il delimitatore è _ (underscore).
+` -f1`  dice: "prendi il primo campo".
+
+Applicato a S1_10_L001_R1_001.fastq.gz, diventa S1 (perchè i campi sono S1, 10, L001, R1 e 001.fastq.gz)
+Questa stringa viene assegnata a sample con ` sample=$(...)` 
+
+Quindi per ` S1_10_L001_R1_001.fastq.gz`  → sample="S1"
+
+` read=$(echo "$f" | grep -o "R[12]")` 
+per estrarre R1 o R2 dal nome del file.
+` grep`  cerca un pattern nel testo, ` -o`  stampa solo la parte che matcha il pattern, non l’intera riga.
+` "R[12]"`  è una regular expression: 
+R = lettera R. [12] = un carattere che può essere 1 oppure 2
+per il file ` R1`  → ` read="R1"` 
+` new="test_${sample}_${read}.fastq.gz"` Per costruire il nuovo nome del file.
+` "test_"`  è una stringa fissa.
+
+` ${sample}`  viene sostituito con il contenuto della variabile sample (es. S1).
+
+` ${read}`  viene sostituito con R1 o R2.
+se ` sample="S1"`  e ` read="R1"`  → ` new="test_S1_R1.fastq.gz"` 
+` mv`  è il comando per rinominare file.
+
+` done`  segna la fine del ciclo for
+
+
 - Aggiungere un prefisso a tutti gli header
 ```
 zcat S1_R1.fastq.gz \
