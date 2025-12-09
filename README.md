@@ -1,6 +1,6 @@
-# MicrobiolMarina2023
+# MicrobiolMarina2025
 
-## Pagina Github del corso pratico di Microbiologia Marina 2023
+## Pagina Github del corso pratico di Microbiologia Marina 2025
 
 ### Descrizione della cartella
 
