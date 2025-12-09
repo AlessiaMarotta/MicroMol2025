@@ -347,5 +347,5 @@ zcat S1_R1.fastq.gz \
 ```
 - Reindirizzare l’output in nuovi file
 ```
-zcat S1_R1.fastq.gz | head -n 20 > prima_read.fastq
+zcat S1_R1.fastq.gz | head -n 20 > subset_S1_R1.fastq
 ```
