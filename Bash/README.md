@@ -349,7 +349,7 @@ zcat S1_R1.fastq.gz \
 ```
 zcat S1_R1.fastq.gz | head -n 20 > subset_S1_R1.fastq
 ```
-con il > creiamo o sovrascriviamo. Se invece vogliamo aggiungere una nuova riga ad un file di testo possiamo usare >>
+Con il ` >`  creiamo o sovrascriviamo. Se invece vogliamo aggiungere una nuova riga ad un file di testo possiamo usare ` >>` 
 
 Ad esempio, creiamo un file di testo, e scriviamo all'interno una parola.
 ```
