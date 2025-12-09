@@ -118,5 +118,5 @@ Cosa ci dice?
 - merged : Numero di coppie di reads R1–R2 che sono state mergiate.
 - nonchim : Reads rimaste dopo la rimozione delle chimere.
 - total_retained : Percentuale di reads finali rispetto all’iniziale.
-   
-   DADA2 tutorial: https://benjjneb.github.io/dada2/tutorial.html
+
+DADA2 tutorial: https://benjjneb.github.io/dada2/tutorial.html
