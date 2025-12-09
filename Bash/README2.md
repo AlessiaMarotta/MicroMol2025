@@ -41,25 +41,6 @@ rm –r foldername #remove folder
 ```
 > tip: be VERY careful with rm, once you removed something there is no way to undo it; remember bash is case sensitive, the file, folder or scritp "Data" is different from "data".
 ---
-## Compress and decompress data
-
-```
-gzip file #compress file file.gz
-bzip2 file #slower than gzip but higher compression ratio
-gzip –k file #keep also the not compressed file
-gunzip file.gz #uncompress file
-zless file.gz #less compressed file
-zgrep "word" file.gz #use grep in compressed file
-```
-With **gzip** you don't get compression across files, each file is compressed independent of the others in the archive, advantage: you can access any of the files contained within.
-
-With **tar** the only gain you can expect using tar alone would be by avoiding the space wasted by the file system as most of them allocate space at some granularity.
-
-In **tar.gz** compression: create an archieve and extra step that compresses the entire archive, you cannot access single files without decompressing them.
-```
-tar -zcvf myfolder.tar.gz myfolder # c create archive; z gzip archive; f specify new output; v verbose
-tar xvfz ./nome_archivio.tgz #decompress archive
-```
 ## Merge and sort files
 ```
 cat file1 file2 file3 … #merge multiple files in 1  
@@ -170,3 +151,102 @@ for i in *fasta; do grep –c”>” $i ; done > counts
 for i in *fasta; do program1 $i > “output_”$i; done
 for i in */ ; do cd $i; cp *.fasta ../; cd ..; done
 ```
+## Bash script (VEDIAMO)
+
+Bash scripts are indicated with the .sh extention (python scripts with .py, perl scripts with .pl). 
+
+Create bash script with vi:
+
+```
+#!/bin/bash
+mkdir test
+for i in *fasta; do mv $i test; done
+cd test
+for i in *fasta; do program1 $i > $i"_output"; done
+for i in *output; do grep ">" $i; done > list_of_sequences
+```
+We need now to make the .sh file executable
+```
+chmod 777 namescript.sh
+```
+To execute the bash script
+```
+bash namescript.sh
+```
+## Bash script with variables
+
+fake_script.sh
+```
+#!/bin/bash
+#$1=fasta file
+
+cp "$1" ../data
+```
+To execute it
+```
+bash fake_script.sh file1.fasta
+```
+
+This is the script get_sequences_from_list_of_loci.sh
+```
+#!/bin/bash
+#retrieve sequences from a list of loci 
+#$1=list of loci to grep in a fasta file
+#$2=fasta file
+
+
+file="$1" ; name=$(cat $file) ; for locus in $name ; do grep -w -A1 $locus "$2" ; done > "$1".fasta
+```
+Execute the script
+```
+bash get_sequences_from_list_of_loci.sh list_file M_musculus.fasta
+```
+## Conda
+```
+conda init bash # initialize conda
+conda env list # see list of environments
+conda activate "environment_name" # activate environment_name
+conda list # see packages installed in that environment_name
+conda deactivate # close environment 
+```
+Some usefull conda commands:
+
+```
+conda create --name <ENV_NAME> #Create a target conda environment
+conda activate <ENV_NAME> #Activate a target environment
+conda deactivate #Deactivate your current environment
+conda info --envs #print a list of conda environments
+conda list #print a lost of packages installed in your current environment
+conda install -c <CONDA_CHANNEL> <PACKAGE_NAME> #install a conda package
+```
+
+A good practice is to create AND install necessary packages at the same moment :
+
+```
+conda create --name <ENV_NAME> -c <CONDA_CHANNEL> <PACKAGE_NAME>
+```
+
+Conda is a package manager based on python. Each conda environment can only have **ONE** specific version of python installed. Now the default version is the latest 3.X but some old software can be run only in python 2.7. To create a python 2.7 environment :
+
+```
+conda create --name <ENV_NAME> python=2.7
+```
+### Good practices in bioinformatics :
+
+  1. **Work in a robust and reproducible way**
+  2. **Document each step**
+  3. **Check everything between computational steps, errors can be silent**
+  4. **Code should be readable and organized in a logical way**
+  5. **Files, file names and folders organized in a logical way**
+  6. **Humans doing rote activities tend to make many mistakes, have your computer do as much of this rote work as possible**
+  7. **Internet is your best friend and mentor, google everything that you don't understand!**
+  8. **If an error rise first of all try to solve the problem by yourself:** a) read the error message carefully; b) read again the help of the software; c) check for typos, they are everywhere; d) GOOGLE it!
+
+
+### Some usefull online resources :
+
+  1. **Stack Overflow**
+  2. **BioStars**
+  3. **Issue page of GitHub**.
+  
+---
