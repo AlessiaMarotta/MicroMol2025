@@ -47,12 +47,9 @@ cat file1 file2 file3 … #merge multiple files in 1
 cat file1 file2 file3 > newfilename #redirect output to new file
 sort file #sort the file, careful to computational sorting of file
 sort –h file #human numeric sort
-sort -t file #specify field separator (e.g., -t",")
 sort -k1,1 -k2,2n file #sort by first column adn then numerically by second column
 sort -k1,1 -k2,2nr file #sort by first column adn then numerically by second column in reversed order
 sort -k1,1V -k2,2n file #as before but human sorted
-join -1 1 -2 1 sorted_file1 sorted_file2 #join two files according to first column of each file
-join -1 1 -2 1 -a 1 sorted_file1 sorted_file2 #keep also non joined rows
 paste file1 file2 #merge lines of files
 ```
 ## Grep
@@ -250,3 +247,56 @@ conda create --name <ENV_NAME> python=2.7
   3. **Issue page of GitHub**.
   
 ---
+
+
+
+Esercizi
+1 - Visualizzare le prime 8 righe (prime 2 reads)
+```
+zcat S1_10_L001_R1_001.fastq.gz | head -n 8
+```
+2 - Sfogliare l’intero file
+```
+zcat S1_10_L001_R1_001.fastq.gz | less -S
+```
+3 - Contare le linee
+```
+zcat S1_10_L001_R1_001.fastq.gz | wc -l
+```
+4 - Numero di reads
+```
+echo $(( $(zcat S1_10_L001_R1_001.fastq.gz | wc -l) / 4 ))
+```
+5 - Lunghezza della prima read
+```
+zcat S1_10_L001_R1_001.fastq.gz | sed -n '2p' | awk '{print length}'
+```
+6 - Lunghezza media di tutte le reads
+```
+zcat S1_10_L001_R1_001.fastq.gz \
+    | awk 'NR%4==2 { total+=length($0); n++ } END { print total/n }'
+```
+7 - Cercare una sequenza specifica
+```
+zcat S1_10_L001_R1_001.fastq.gz | grep -c "ACGTACGT"
+```
+8- Rinominare i files
+```
+for f in *.fastq.gz; do
+    sample=$(echo "$f" | cut -d'_' -f1)
+    read=$(echo "$f" | grep -o "R[12]")
+    new="test_${sample}_${read}.fastq.gz"
+    mv "$f" "$new"
+done
+
+```
+9- Aggiungere un prefisso a tutti gli header
+```
+zcat S1_R1.fastq.gz \
+   | awk 'NR%4==1{print "@S1_" substr($0,2)} NR%4!=1{print}' \
+   | gzip > S1_R1_renamed.fastq.gz
+```
+10 - Reindirizzare l’output in nuovi file
+```
+zcat S1_R1.fastq.gz | head -n 20 > prima_read.fastq
+```
