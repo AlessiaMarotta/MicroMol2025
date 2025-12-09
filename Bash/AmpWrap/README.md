@@ -98,14 +98,25 @@ FIGARO automatically identifies optimal trimming parameters, such as truncation 
    - Sample Inference
    - Merge paired reads
    - Construct sequence table
-     
    - Remove chimeras
      Merge the forward and reverse reads together to obtain the full denoised sequences. Merging is performed by aligning the denoised forward reads with the reverse-complement of the corresponding denoised reverse reads, and then constructing the merged “contig” sequences. By default, merged sequences are only output if the forward and reverse reads overlap by at least 12 bases, and are identical to each other in the overlap region (but these conditions can be changed via function arguments).
-     
    - Track reads through the pipeline
    - Assign taxonomy
-   - 
-     
-  
+
+Vediamo il report finale creato da AmpWrap
+   ```
+   cd results/
+   ls -ltrh
+   cat final_report.txt
+   ```
+<img width="1236" height="843" alt="image" src="https://github.com/user-attachments/assets/e9dbb78d-e9c2-44ff-bd60-f724c6845806" />
+
+Cosa ci dice?
+- reads.in : Numero di raw reads in input (FASTQ).
+- reads.out : Reads rimaste dopo cutadapt
+- dadaF e dadaR : Numero di letture rimaste dopo il filtraggio per forward (F) e reverse (R) in DADA2.
+- merged : Numero di coppie di reads R1–R2 che sono state mergiate.
+- nonchim : Reads rimaste dopo la rimozione delle chimere.
+- total_retained : Percentuale di reads finali rispetto all’iniziale.
    
    DADA2 tutorial: https://benjjneb.github.io/dada2/tutorial.html
